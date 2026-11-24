@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Currency Explorer</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <header>
+            <h1>Currency Explorer</h1>
+            <p class="sub">See exchange rates for every currency, convert an amount and keep your favourites handy.</p>
+        </header>
+        <main>
+            <section class="panel controls">
+                <div>
+                    <label for="base">From currency</label>
+                    <select id="base"><option value="USD">USD</option></select>
+                </div>
+
+                <div>
+                    <label for="amount">Amount</label>
+                    <input id="amount" type="number" min="0" step="any" value="1" inputmode="decimal"/>
+                </div>
+
+                <div>
+                    <label for="search">Search code or name</label>
+                    <input id="search" type="text" placeholder="e.g: euro"/>
+                </div>
+
+                <div>
+                    <label for="sort">Sort by</label>
+                    <select id="sort">
+                        <option value="code">Code (A-Z)</option>
+                        <option value="name">Name (A-Z)</option>
+                        <option value="rate-desc">Rate</option>
+                        <option value="rate-asc">Rate</option>
+                    </select>
+                </div>
+
+                <div class="check">
+                    <label><input id="fav-only" type="checkbox"/>Favourites only</label>
+                    <button id="refresh" type="button" class="secondary">Refresh</button>
+                </div>
+            </section>
+
+            <div id="message" class="message" role="status" hidden></div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="star-col"><span class="sr">Favourites</span></th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Currency</th>
+                            <th scope="col" class="num">Rate (1 <span id="base-label">USD</span> =)</th>
+                            <th scope="col" class="num">Converted</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows"></tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer>
+            <p id="status"></p>
+            <p>Exchange rate data by <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener">ExchangeRate-API</a>.
+            <span id="served-by"></span></p>
+        </footer>
+        <script src="currency.js"></script>
+    </body>
+</html>
