@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Convert between 160+ currencies with live exchange and browse the rates."/>
         <title>Currency Explorer</title>
         <link rel="stylesheet" href="style.css"/>
     </head>
@@ -12,11 +13,9 @@
             <p class="sub">See exchange rates for every currency, convert an amount and keep your favourites handy.</p>
         </header>
         <main>
-            <section class="panel controls">
-                <div>
-                    <label for="base">From currency</label>
-                    <select id="base"><option value="USD">USD</option></select>
-                </div>
+            <section class="panel">
+                <h2>Convert currency</h2>
+                <form id="convert-form" class="converter" autocomplete="off">
 
                 <div>
                     <label for="amount">Amount</label>
@@ -24,27 +23,54 @@
                 </div>
 
                 <div>
-                    <label for="search">Search code or name</label>
-                    <input id="search" type="text" placeholder="e.g: euro"/>
+                    <label for="base">From</label>
+                    <select id="base"><option value="USD">USD</option></select>
                 </div>
 
+                <button id="swap" type="button" class="secondary" aria-label="Swap the two currencies" title="Swap the two currencies">&#8644;</button>
+
                 <div>
+                    <label for="to">To</label>
+                    <select id="to"><option value="EUR">EUR</option></select>
+                </div>
+
+                <button id="convert" type="submit">Convert</button>
+                </form>
+
+                <div id="result" class="result" role="status" hidden>
+                    <p id="result-main" class="result-main"></p>
+                    <p id="result-sub" class="result-sub"></p>
+                </div>
+
+                <p class="panel-actions">
+                    <button id="refresh" type="button" class="secondary">Refresh rates</button>
+                </p>
+                </section>
+
+                <div id="message" class="message" role="status" hidden></div>
+                <details id="browse" class="panel">
+                    <summary>Browse all currencies and rates</summary>
+
+                    <div class="controls">
+                        <div>
+                            <label for="search">Search code or name</label>
+                            <input id="search" type="text" placeholder="e.g: euro"/>
+                        </div>
+                    
+                    <div>
                     <label for="sort">Sort by</label>
                     <select id="sort">
                         <option value="code">Code (A-Z)</option>
                         <option value="name">Name (A-Z)</option>
-                        <option value="rate-desc">Rate</option>
-                        <option value="rate-asc">Rate</option>
+                        <option value="rate-desc">Rate (high-low)</option>
+                        <option value="rate-asc">Rate (low-high)</option>
                     </select>
-                </div>
+                    </div>
 
-                <div class="check">
-                    <label><input id="fav-only" type="checkbox"/>Favourites only</label>
-                    <button id="refresh" type="button" class="secondary">Refresh</button>
-                </div>
-            </section>
-
-            <div id="message" class="message" role="status" hidden></div>
+                    <div class="check">
+                        <label><input id="fav-only" type="checkbox"/>Favourites only</label>
+                    </div>
+                    </div>
 
             <div class="table-wrap">
                 <table>
@@ -60,11 +86,12 @@
                     <tbody id="rows"></tbody>
                 </table>
             </div>
+            </details>
         </main>
 
         <footer>
             <p id="status"></p>
-            <p>Exchange rate data by <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener">ExchangeRate-API</a>.
+            <p><a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener">Rates By Exchange Rate API</a>
             <span id="served-by"></span></p>
         </footer>
         <script src="currency.js"></script>

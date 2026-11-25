@@ -203,3 +203,64 @@ button {
  footer a {
     color: #4a2c1a;
  }
+
+ h2 {
+   margin: 0 0 12px;
+   font-size: 1.15rem;
+   color: #4a2c1a;
+ }
+
+ .converter {
+   display: flex;
+   gap: 12px;
+   flex-wrap: wrap;
+   align-items: flex-end;
+ }
+
+ .converter > div {
+   flex: 1 1 150px;
+ }
+
+ .converter button {
+   padding: 9px 20px;
+ }
+
+ .result {
+   margin-top: 16px;
+   padding: 14px 16px;
+   border-radius: 8px;
+   background: #f1e6da;
+   border: 1px solid #e1d5ca;
+ }
+
+ .result-main {
+   margin: 0;
+   font-size: 1.5rem;
+   font-weight: 700;
+   color: #4a2c1a;
+ }
+
+ .result-sub {
+   margin: 4px 0 0;
+   font-size: 0.9rem;
+   color: #6b5646;
+ }
+
+ .panel-actions {
+   margin: 12px 0 0;
+ }
+
+ details.panel > summary {
+   cursor: pointer;
+   color: #4a2c1a;
+   font-size: 1.05rem;
+   font-weight: 600;
+ }
+
+ details.panel[open] > summary {
+   margin-bottom: 14px;
+ }
+
+ details .table-wrap {
+   margin: 16px 0 0;
+ }
