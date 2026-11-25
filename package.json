@@ -1,0 +1,13 @@
+{
+    "name": "currency-explorer",
+    "version": "1.0.0",
+    "description": "Explore, search, sort and convert live exchange rates. Node server proxying ExchangeRate-API, deployable behind a load balancer.",
+    "main": "server.js",
+    "scripts": {
+        "start" : "node server.js"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "license": "MIT"
+}
