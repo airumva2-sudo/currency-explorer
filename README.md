@@ -8,9 +8,9 @@ A web app for exploring live exchange rates. Choose a base currency (for example
 
 | Role | Address |
 |---|---|
-| **Load balancer (Lb01), use this one** | `http://<18.133.246.239>` |
-| Web01 | `http://<3.10.140.187>` |
-| Web02 | `http://<18.170.225.28>` |
+| **Load balancer (Lb01), use this one** | `http://18.133.246.239` |
+| Web01 | `http://3.10.140.187` |
+| Web02 | `http://18.170.225.28` |
 
 ## Features
 
@@ -128,8 +128,8 @@ backend currency_back
     retries 3
     option httpchk GET /health
     http-check expect status 200
-    server web01 <3.10.140.187>:80 check inter 2s fall 2 rise 2
-    server web02 <18.170.225.28>:80 check inter 2s fall 2 rise 2
+    server web01 3.10.140.187:80 check inter 2s fall 2 rise 2
+    server web02 18.170.225.28:80 check inter 2s fall 2 rise 2
 ```
 
 ```bash
@@ -142,7 +142,7 @@ Round robin alternates between the servers. The health check (`/health`) stops t
 
 **Load sharing** (PowerShell, prints which server answered):
 ```powershell
-1..10 | ForEach-Object {(Invoke-WebRequest -UseBasicParsing http://<18.133.246.239>/health).Headers['X-Served-By']}
+1..10 | ForEach-Object {(Invoke-WebRequest -UseBasicParsing http://18.133.246.239/health).Headers['X-Served-By']}
 ```
 Expected: `web01` and `web02` alternating.
 
